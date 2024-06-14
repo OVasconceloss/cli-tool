@@ -1,21 +1,25 @@
 #!/usr/bin/env node
 import arg from 'arg';
-import chalk from 'chalk';
+import logger from "../src/logger.js";
 import start from '../src/commands/start.js';
 import getConfig from '../src/config/config-mgr.js';
+
+const logMessage = logger('config:mgr');
 
 try  {
     const args = arg({
         '--start': Boolean,
         '--build': Boolean,
     });
+
+    logMessage.debug('Received args', args);
     
     if (args['--start']) {
         const configuration = getConfig();
         start(configuration);
     }
 } catch (error) {
-    console.log(chalk.yellow(error.message));
+    logMessage.warning(error.message);
     console.log(' ');
 
     usageTool();
