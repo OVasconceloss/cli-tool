@@ -6,8 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["cli", "javascript", "tool", "cli-tool"],
+  "keywords": [
+    "cli",
+    "javascript",
+    "tool",
+    "cli-tool"
+  ],
   "author": "Victor Vasconcelos",
   "license": "MIT",
-  "description": "A command-line tool (CLI) for accessing Webpack, TypeScript, Babel, TSLint, ESLint, Prettier, and more."
+  "description": "A command-line tool (CLI) for accessing Webpack, TypeScript, Babel, TSLint, ESLint, Prettier, and more.",
+  "dependencies": {
+    "arg": "^5.0.2"
+  }
 }
