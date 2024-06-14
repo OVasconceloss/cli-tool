@@ -1,0 +1,12 @@
+{
+  "name": "cli-tool",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["cli", "javascript", "tool", "cli-tool"],
+  "author": "Victor Vasconcelos",
+  "license": "MIT",
+  "description": "A command-line tool (CLI) for accessing Webpack, TypeScript, Babel, TSLint, ESLint, Prettier, and more."
+}
