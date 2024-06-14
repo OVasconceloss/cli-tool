@@ -1,13 +1,16 @@
 import chalk from "chalk";
-import { pkgUpSync } from "pkg-up";
+import { cosmiconfigSync } from "cosmiconfig";
+
+const configLoader = cosmiconfigSync('tool');
 
 export default function getConfig() {
-    const packagePath = pkgUpSync({ cwd: process.cwd()});
-    const packageConfig = packagePath;
+    const resultConfig = configLoader.search(process.cwd());
 
-    if (packageConfig.tool) {
-        console.log('Found configuration (package.json file)', packageConfig.tool);
+    if (resultConfig) {
+        console.log('Found configuration (package.json file)', resultConfig.config);
         return packageConfig.tool;
+    } else if (hasJSConfigFile()) {
+        return loadJSConfigFile();
     } else {
         console.log(chalk.yellow('Could not find configuration, using default'));
         return { port: 8080 };
