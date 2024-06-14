@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import arg from 'arg';
 import chalk from 'chalk';
-import { pkgUpSync } from 'pkg-up';
+import start from '../src/commands/start.js';
+import getConfig from '../src/config/config-mgr.js';
 
 try  {
     const args = arg({
@@ -10,16 +11,8 @@ try  {
     });
     
     if (args['--start']) {
-        const packagePath = pkgUpSync({ cwd: process.cwd() });
-        const packageConfig = packagePath;
-
-        if (packageConfig.tool) {
-            console.log('Found configuration (package.json file)', packageConfig.tool);
-        } else {
-            console.log(chalk.yellow('Could not find configuration, using default'))
-        }
-
-        console.log(chalk.green('starting the app'));
+        const configuration = getConfig();
+        start(configuration);
     }
 } catch (error) {
     console.log(chalk.yellow(error.message));
